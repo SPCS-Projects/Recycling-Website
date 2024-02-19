@@ -6,13 +6,14 @@ const currentUser = wixUsers.currentUser;
 
 // Check if the user is logged in
 if (currentUser.loggedIn) {
-    // Get the user's role
+    // Check if the user exists in the database yet, and adds them if not
     const query = wixData.query("users").eq('userID', currentUser.id);
     query.find()
         .then(results => {
         if (results.items.length === 0) {
             wixData.insert("users", {"userID": currentUser.id, "points": 0})
         }
+    // Checks the users roles to see if they should send them to the admin dashbaord
     currentUser.getRoles()
         .then((roles) => {
             let iter = roles["length"]
