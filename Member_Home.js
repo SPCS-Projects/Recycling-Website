@@ -1,14 +1,4 @@
-import wixUsers from 'wix-users';
-import wixLocation from 'wix-location';
 import wixData from 'wix-data';
-
-const currentUser = wixUsers.currentUser;
-
-// Check if the user is logged in, then sends them to the redirect page to either go to the admin dash or member home
-if (currentUser.loggedIn) {
-    wixLocation.to('/redirect');
-}
-
 
 async function popRepeaters() {
     let bin_data;
@@ -24,7 +14,8 @@ async function popRepeaters() {
         $item('#binName').text = (itemData.binName).toString();
         $item('#location').text = (itemData.location).toString();
         $item('#gmaps').link = (itemData.gmaps).toString();
-    } );
+        $item('#recycle').link = '/recycling-bins/'+(itemData.binID).toString();     
+    });
 
     // Set repeater data after processing
     $w('#repeater1').data = bin_data
