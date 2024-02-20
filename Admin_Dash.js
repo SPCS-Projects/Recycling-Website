@@ -1,17 +1,16 @@
-
 $w.onReady(function () {
     // manage bins button to manage bins state box
-    $w("#button7").onClick(event => {
-        $w("#multiStateBox1").changeState("box2");
+    $w("#btnBinManage").onClick(event => {
+        $w("#multiStateBox1").changeState("stBoxBins");
     });
 
     // manage users button to manage users state box
-    $w("#button6").onClick(event => {
-        $w("#multiStateBox1").changeState("box1");
+    $w("#btnUserManage").onClick(event => {
+        $w("#multiStateBox1").changeState("stBoxUsers");
     });
 
-    // point management button to point management state box
-    $w("#button5").onClick(event => {
-        $w("#multiStateBox1").changeState("box1");
+    // manage rewards button to manage rewards
+    $w("#btnRewardManage").onClick(event => {
+        $w("#multiStateBox1").changeState("stBoxPoints");
     });
 });
