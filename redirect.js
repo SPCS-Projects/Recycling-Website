@@ -10,6 +10,7 @@ if (currentUser.loggedIn) {
     const query = wixData.query("users").eq('userID', currentUser.id);
     query.find()
         .then(results => {
+        //if user doesn't exist create an entry in the database
         if (results.items.length === 0) {
             wixData.insert("users", {"userID": currentUser.id, "points": 0})
         }
@@ -21,6 +22,7 @@ if (currentUser.loggedIn) {
                 userRoles.push(roles[i]["name"])
 
             }
+            //check if the user is an admin, if so take them to the admin page otherwise the main page that allows recycling
             if (userRoles.includes("Admin")) {
                 wixLocation.to('/admin-dashboard');
             } else {
